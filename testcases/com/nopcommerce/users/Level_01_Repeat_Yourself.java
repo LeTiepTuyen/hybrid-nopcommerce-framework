@@ -44,6 +44,8 @@ public class Level_01_Repeat_Yourself {
 
     @Test
     public void TC_01_Register() {
+
+        
         driver.findElement(By.cssSelector("a.ico-register")).click();
         driver.findElement(By.cssSelector("input#gender-male")).click();
         driver.findElement(By.cssSelector("input#FirstName")).sendKeys(firstName);
