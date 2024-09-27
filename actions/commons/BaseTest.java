@@ -1,22 +1,38 @@
 package commons;
 
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.safari.SafariDriver;
 
 import java.time.Duration;
 import java.util.Random;
 
 public class BaseTest {
     private WebDriver driver;
+    private String projectPath = System.getProperty("user.dir");
 
     protected WebDriver getBrowserDriver(String browserName) {
-        //write switch case with lambda expression to init browser type depends on browserName:
-        switch (browserName) {
-            case "firefox" -> driver = new FirefoxDriver();
-            case "chrome" -> driver = new ChromeDriver();
-            case "edge" -> driver = new EdgeDriver();
+        BrowserList browserList = BrowserList.valueOf(browserName.toUpperCase());
+        switch (browserList) {
+            case FIREFOX -> {
+//              System.setProperty("webdriver.gecko.driver", projectPath + "\\browserDrivers\\geckodriver.exe");
+//                driver = WebDriverManager.firefoxdriver().create();
+                driver = new FirefoxDriver();
+            }
+            case CHROME -> {
+//                System.setProperty("webdriver.chrome.driver", projectPath + "\\browserDrivers\\chromedriver.exe");
+//                driver = WebDriverManager.chromedriver().create();
+                driver = new ChromeDriver();
+            }
+            case EDGE -> {
+//                System.setProperty("webdriver.edge.driver", projectPath + "\\browserDrivers\\msedgedriver.exe");
+//                driver = WebDriverManager.edgedriver().create();
+                driver = new EdgeDriver();
+            }
+            case SAFARI -> driver = new SafariDriver();
             default -> throw new IllegalArgumentException("Browser name is not valid: " + browserName);
         }
 
