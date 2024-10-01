@@ -7,12 +7,9 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-import pageObjects.CustomerInfoPageObject;
-import pageObjects.HomePageObject;
-import pageObjects.LoginPageObject;
-import pageObjects.RegisterPageObject;
+import pageObjects.*;
 
-public class Level_04_Multiple_Browsers extends BaseTest {
+public class Level_06_Page_Generator extends BaseTest {
 
     private WebDriver driver;
 
@@ -29,7 +26,7 @@ public class Level_04_Multiple_Browsers extends BaseTest {
 
         driver = getBrowserDriver(browserName);
 
-        homePage = new HomePageObject(driver);
+        homePage = PageGeneratorManager.getHomePage(driver);
         firstName = "John";
         lastName = "Wick";
         emailAddress = "johnwick" + generatedRandomNumber() + "@gmail.com";
@@ -45,8 +42,8 @@ public class Level_04_Multiple_Browsers extends BaseTest {
 
     @Test
     public void User_01_Register() {
-        homePage.clickToRegisterLink();
-        registerPage = new RegisterPageObject(driver);
+
+        registerPage = homePage.clickToRegisterLink();
 
         registerPage.clickToMaleRadio();
         registerPage.enterToFirstNameTextBox(firstName);
@@ -61,31 +58,23 @@ public class Level_04_Multiple_Browsers extends BaseTest {
         registerPage.clickToRegisterButton();
         Assert.assertEquals(registerPage.getRegisterSuccessMessage(), "Your registration completed");
 
-        registerPage.clickToLogoutLink();
-
-
     }
 
     @Test
     public void User_02_Login() {
-        homePage = new HomePageObject(driver);
-        homePage.clickToLoginLink();
+        homePage = registerPage.clickToLogoutLink();
+        loginPage = homePage.clickToLoginLink();
 
-        loginPage = new LoginPageObject(driver);
-        loginPage.enterToEmailTextBox(emailAddress);
-        loginPage.enterToPasswordTextBox(password);
-        loginPage.clickToLoginButton();
 
-        homePage = new HomePageObject(driver);
+        homePage = loginPage.loginToSystem(emailAddress, password);
         Assert.assertTrue(homePage.isMyAccountLinkDisplayed());
-        homePage.clickToMyAccountLink();
 
 
     }
 
     @Test
     public void User_03_MyAccount() {
-        customerInfoPage = new CustomerInfoPageObject(driver);
+        customerInfoPage = homePage.clickToMyAccountLink();
         Assert.assertTrue(customerInfoPage.isGenderMaleRadioButtonSelected());
         Assert.assertEquals(customerInfoPage.getFirstNameTextBoxValue(), firstName);
         Assert.assertEquals(customerInfoPage.getLastNameTextBoxValue(), lastName);

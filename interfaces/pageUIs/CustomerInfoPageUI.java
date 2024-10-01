@@ -1,14 +1,6 @@
 package pageUIs;
 
 public class CustomerInfoPageUI {
-    //        Assert.assertTrue(isElementSelected(driver, "//input[@id='gender-male']"));
-//        Assert.assertEquals(getElementAttribute(driver, "//input[@id='FirstName']", "value"), firstName);
-//        Assert.assertEquals(getElementAttribute(driver, "//input[@id='LastName']", "value"), lastName);
-//        Assert.assertEquals(getSelectedItemInDropDown(driver, "//select[@name='DateOfBirthDay']"), day);
-//        Assert.assertEquals(getSelectedItemInDropDown(driver, "//select[@name='DateOfBirthMonth']"), month);
-//        Assert.assertEquals(getSelectedItemInDropDown(driver, "//select[@name='DateOfBirthYear']"), year);
-//        Assert.assertEquals(getElementAttribute(driver, "//input[@id='Email']", "value"), emailAddress);
-//        Assert.assertEquals(getElementAttribute(driver, "//input[@id='Company']", "value"), companyName);
 
     public static final String GENDER_MALE_RADIO = "//input[@id='gender-male']";
     public static final String FIRST_NAME_TEXTBOX = "//input[@id='FirstName']";

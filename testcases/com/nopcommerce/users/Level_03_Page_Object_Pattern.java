@@ -1,6 +1,5 @@
 package com.nopcommerce.users;
 
-import commons.BasePage;
 import commons.BaseTest;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -8,13 +7,12 @@ import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import pageObjects.CustomerInfoObject;
+import pageObjects.CustomerInfoPageObject;
 import pageObjects.HomePageObject;
 import pageObjects.LoginPageObject;
 import pageObjects.RegisterPageObject;
 
 import java.time.Duration;
-import java.util.Random;
 
 public class Level_03_Page_Object_Pattern extends BaseTest {
 
@@ -22,7 +20,7 @@ public class Level_03_Page_Object_Pattern extends BaseTest {
 
     private HomePageObject homePage;
     private LoginPageObject loginPage;
-    private CustomerInfoObject customerInfoPage;
+    private CustomerInfoPageObject customerInfoPage;
     private RegisterPageObject registerPage;
     private String firstName, lastName, emailAddress, companyName, password, day, month, year;
 
@@ -127,7 +125,7 @@ public class Level_03_Page_Object_Pattern extends BaseTest {
 
     @Test
     public void User_03_MyAccount() {
-        customerInfoPage = new CustomerInfoObject(driver);
+        customerInfoPage = new CustomerInfoPageObject(driver);
         Assert.assertTrue(customerInfoPage.isGenderMaleRadioButtonSelected());
         Assert.assertEquals(customerInfoPage.getFirstNameTextBoxValue(), firstName);
         Assert.assertEquals(customerInfoPage.getLastNameTextBoxValue(), lastName);

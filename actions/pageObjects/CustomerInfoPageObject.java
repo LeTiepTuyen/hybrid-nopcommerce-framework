@@ -4,16 +4,16 @@ import commons.BasePage;
 import org.openqa.selenium.WebDriver;
 import pageUIs.CustomerInfoPageUI;
 
-public class CustomerInfoObject extends BasePage {
+public class CustomerInfoPageObject extends BasePage {
     WebDriver driver;
 
-    public CustomerInfoObject(WebDriver driver) {
+    public CustomerInfoPageObject(WebDriver driver) {
         this.driver = driver;
     }
 
     public boolean isGenderMaleRadioButtonSelected() {
-        return waitForElementTobeSelected(driver, CustomerInfoPageUI.GENDER_MALE_RADIO);
-//        return isElementSelected(driver, CustomerInfoPageUI.GENDER_MALE_RADIO);
+        waitForElementTobeSelected(driver, CustomerInfoPageUI.GENDER_MALE_RADIO);
+        return isElementSelected(driver, CustomerInfoPageUI.GENDER_MALE_RADIO);
     }
 
     public String getFirstNameTextBoxValue() {
