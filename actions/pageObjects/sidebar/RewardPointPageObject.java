@@ -1,8 +1,7 @@
-package pageObjects;
+package pageObjects.sidebar;
 
-import commons.BasePage;
 import org.openqa.selenium.WebDriver;
-import pageUIs.RewardPointPageUI;
+import pageObjects.SideBarPageObject;
 
 public class RewardPointPageObject extends SideBarPageObject {
     WebDriver driver;

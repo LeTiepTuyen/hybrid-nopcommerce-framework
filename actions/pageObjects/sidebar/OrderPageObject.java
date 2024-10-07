@@ -1,8 +1,7 @@
-package pageObjects;
+package pageObjects.sidebar;
 
-import commons.BasePage;
 import org.openqa.selenium.WebDriver;
-import pageUIs.OrderPageUI;
+import pageObjects.SideBarPageObject;
 
 public class OrderPageObject extends SideBarPageObject {
     WebDriver driver;

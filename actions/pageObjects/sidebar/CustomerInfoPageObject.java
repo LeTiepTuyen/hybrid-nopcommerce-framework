@@ -1,8 +1,7 @@
-package pageObjects;
+package pageObjects.sidebar;
 
-import commons.BasePage;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.remote.RemoteWebDriver;
+import pageObjects.SideBarPageObject;
 import pageUIs.CustomerInfoPageUI;
 
 public class CustomerInfoPageObject extends SideBarPageObject {

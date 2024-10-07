@@ -1,7 +1,10 @@
 package pageObjects;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.remote.RemoteWebDriver;
+import pageObjects.sidebar.AddressPageObject;
+import pageObjects.sidebar.CustomerInfoPageObject;
+import pageObjects.sidebar.OrderPageObject;
+import pageObjects.sidebar.RewardPointPageObject;
 
 public class PageGeneratorManager {
     public static HomePageObject getHomePage(WebDriver driver) {

@@ -1,9 +1,7 @@
-package pageObjects;
+package pageObjects.sidebar;
 
-import commons.BasePage;
 import org.openqa.selenium.WebDriver;
-import pageUIs.AddressPageUI;
-import pageUIs.RewardPointPageUI;
+import pageObjects.SideBarPageObject;
 
 public class AddressPageObject extends SideBarPageObject {
 
