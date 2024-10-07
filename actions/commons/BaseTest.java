@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
 
 import java.time.Duration;
@@ -21,16 +22,19 @@ public class BaseTest {
 //              System.setProperty("webdriver.gecko.driver", projectPath + "\\browserDrivers\\geckodriver.exe");
 //                driver = WebDriverManager.firefoxdriver().create();
                 driver = new FirefoxDriver();
+
             }
             case CHROME -> {
 //                System.setProperty("webdriver.chrome.driver", projectPath + "\\browserDrivers\\chromedriver.exe");
 //                driver = WebDriverManager.chromedriver().create();
                 driver = new ChromeDriver();
+
             }
             case EDGE -> {
 //                System.setProperty("webdriver.edge.driver", projectPath + "\\browserDrivers\\msedgedriver.exe");
 //                driver = WebDriverManager.edgedriver().create();
                 driver = new EdgeDriver();
+                
             }
             case SAFARI -> driver = new SafariDriver();
             default -> throw new IllegalArgumentException("Browser name is not valid: " + browserName);

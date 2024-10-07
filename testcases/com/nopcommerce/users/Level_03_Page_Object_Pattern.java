@@ -47,7 +47,7 @@ public class Level_03_Page_Object_Pattern extends BaseTest {
 
     @Test
     public void User_01_Register() {
-        homePage.clickToRegisterLink();
+        homePage.openRegisterPage();
         registerPage = new RegisterPageObject(driver);
 
         registerPage.clickToMaleRadio();
@@ -95,16 +95,16 @@ public class Level_03_Page_Object_Pattern extends BaseTest {
     @Test
     public void User_02_Login() {
         homePage = new HomePageObject(driver);
-        homePage.clickToLoginLink();
+        homePage.openHomePage();
 
         loginPage = new LoginPageObject(driver);
         loginPage.enterToEmailTextBox(emailAddress);
         loginPage.enterToPasswordTextBox(password);
-        loginPage.clickToLoginButton();
+        loginPage.openLoginPage();
 
         homePage = new HomePageObject(driver);
         Assert.assertTrue(homePage.isMyAccountLinkDisplayed());
-        homePage.clickToMyAccountLink();
+        homePage.openCustomerInfoPage();
 
 
 //        waitForElementClickable(driver, "//a[@class='ico-logout']");

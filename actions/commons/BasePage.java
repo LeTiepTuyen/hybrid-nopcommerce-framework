@@ -7,6 +7,8 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import pageObjects.*;
+import pageUIs.*;
 
 import java.time.Duration;
 import java.util.List;
@@ -381,5 +383,31 @@ public class BasePage {
         fullFileName = fullFileName.trim();
         getElement(driver, BasePageUI.UPLOAD_GOFILE_TYPE).sendKeys(fullFileName);
     }*/
+
+
+    public AddressPageObject openAddressPage(WebDriver driver) {
+        waitForElementClickable(driver, SideBarUI.ADDRESS_LINK);
+        clickToElement(driver, SideBarUI.ADDRESS_LINK);
+        return PageGeneratorManager.getAddressPage(driver);
+    }
+
+    public RewardPointPageObject openRewardPointPage(WebDriver driver) {
+        waitForElementClickable(driver, SideBarUI.REWARD_POINT_LINK);
+        clickToElement(driver, SideBarUI.REWARD_POINT_LINK);
+        return PageGeneratorManager.getRewardPointPage(driver);
+    }
+
+    public CustomerInfoPageObject openCustomerInfoPage(WebDriver driver) {
+        waitForElementClickable(driver, SideBarUI.CUSTOMER_INFO_LINK);
+        clickToElement(driver, SideBarUI.CUSTOMER_INFO_LINK);
+        return PageGeneratorManager.getCustomerInfoPage(driver);
+    }
+
+
+    public OrderPageObject openOrderPage(WebDriver driver) {
+        waitForElementClickable(driver, SideBarUI.ORDER_LINK);
+        clickToElement(driver, SideBarUI.ORDER_LINK);
+        return PageGeneratorManager.getOrderPage(driver);
+    }
 
 }

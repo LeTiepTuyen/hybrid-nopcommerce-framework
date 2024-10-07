@@ -45,7 +45,7 @@ public class Level_04_Multiple_Browsers extends BaseTest {
 
     @Test
     public void User_01_Register() {
-        homePage.clickToRegisterLink();
+        homePage.openRegisterPage();
         registerPage = new RegisterPageObject(driver);
 
         registerPage.clickToMaleRadio();
@@ -69,16 +69,16 @@ public class Level_04_Multiple_Browsers extends BaseTest {
     @Test
     public void User_02_Login() {
         homePage = new HomePageObject(driver);
-        homePage.clickToLoginLink();
+        homePage.openHomePage();
 
         loginPage = new LoginPageObject(driver);
         loginPage.enterToEmailTextBox(emailAddress);
         loginPage.enterToPasswordTextBox(password);
-        loginPage.clickToLoginButton();
+        loginPage.openLoginPage();
 
         homePage = new HomePageObject(driver);
         Assert.assertTrue(homePage.isMyAccountLinkDisplayed());
-        homePage.clickToMyAccountLink();
+        homePage.openCustomerInfoPage();
 
 
     }

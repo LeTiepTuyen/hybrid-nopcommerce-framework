@@ -22,7 +22,7 @@ public class LoginPageObject extends BasePage {
         sendKeyToElement(driver, LoginPageUI.PASSWORD_TEXTBOX, password);
     }
 
-    public void clickToLoginButton() {
+    public void openLoginPage() {
         waitForElementClickable(driver, LoginPageUI.LOGIN_BUTTON);
         clickToElement(driver, LoginPageUI.LOGIN_BUTTON);
     }
@@ -30,7 +30,7 @@ public class LoginPageObject extends BasePage {
     public HomePageObject loginToSystem(String emailAddress, String password) {
         enterToEmailTextBox(emailAddress);
         enterToPasswordTextBox(password);
-        clickToLoginButton();
+        openLoginPage();
         return PageGeneratorManager.getHomePage(driver);
     }
 }

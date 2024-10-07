@@ -5,22 +5,22 @@
           name="Run on firefox driver">
         <parameter name="browser" value="firefox"/>
         <classes>
-            <class name="com.nopcommerce.users.Level_06_Page_Generator"/>
+            <class name="com.nopcommerce.users.Level_08_Page_Navigation"/>
         </classes>
     </test>
-    <test verbose="2" preserve-order="true"
-          name="Run on Chrome driver">
-        <parameter name="browser" value="chrome"/>
-        <classes>
-            <class name="com.nopcommerce.users.Level_06_Page_Generator"/>
-        </classes>
-    </test>
-    <test verbose="2" preserve-order="true"
-          name="Run on Edge driver">
-        <parameter name="browser" value="edge"/>
-        <classes>
-            <class name="com.nopcommerce.users.Level_06_Page_Generator"/>
-        </classes>
-    </test>
+    <!--    <test verbose="2" preserve-order="true"-->
+    <!--          name="Run on Chrome driver">-->
+    <!--        <parameter name="browser" value="chrome"/>-->
+    <!--        <classes>-->
+    <!--            <class name="com.nopcommerce.users.Level_06_Page_Generator"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
+    <!--    <test verbose="2" preserve-order="true"-->
+    <!--          name="Run on Edge driver">-->
+    <!--        <parameter name="browser" value="edge"/>-->
+    <!--        <classes>-->
+    <!--            <class name="com.nopcommerce.users.Level_06_Page_Generator"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
 
 </suite>
