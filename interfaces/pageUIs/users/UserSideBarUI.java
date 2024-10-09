@@ -1,6 +1,6 @@
-package pageUIs;
+package pageUIs.users;
 
-public class SideBarUI {
+public class UserSideBarUI {
 
     public static final String ADDRESS_LINK = "//div[@class='listbox']//a[contains(@href,'addresses')]";
     public static final String ORDER_LINK = "//div[@class='listbox']//a[contains(@href,'order')]";

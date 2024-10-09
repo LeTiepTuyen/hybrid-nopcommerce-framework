@@ -7,10 +7,10 @@ import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import pageObjects.sidebar.CustomerInfoPageObject;
-import pageObjects.HomePageObject;
-import pageObjects.LoginPageObject;
-import pageObjects.RegisterPageObject;
+import pageObjects.users.UserCustomerInfoPO;
+import pageObjects.users.UserHomePO;
+import pageObjects.users.UserLoginPO;
+import pageObjects.users.UserRegisterPO;
 
 import java.time.Duration;
 
@@ -18,10 +18,10 @@ public class Level_03_Page_Object_Pattern extends BaseTest {
 
     WebDriver driver;
 
-    private HomePageObject homePage;
-    private LoginPageObject loginPage;
-    private CustomerInfoPageObject customerInfoPage;
-    private RegisterPageObject registerPage;
+    private UserHomePO homePage;
+    private UserLoginPO loginPage;
+    private UserCustomerInfoPO customerInfoPage;
+    private UserRegisterPO registerPage;
     private String firstName, lastName, emailAddress, companyName, password, day, month, year;
 
     @BeforeClass
@@ -31,7 +31,7 @@ public class Level_03_Page_Object_Pattern extends BaseTest {
         driver.get("http://demo.nopcommerce/");
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
-        homePage = new HomePageObject(driver);
+        homePage = new UserHomePO(driver);
         firstName = "John";
         lastName = "Wick";
         emailAddress = "johnwick" + generatedRandomNumber() + "@gmail.com";
@@ -48,7 +48,7 @@ public class Level_03_Page_Object_Pattern extends BaseTest {
     @Test
     public void User_01_Register() {
         homePage.openRegisterPage();
-        registerPage = new RegisterPageObject(driver);
+        registerPage = new UserRegisterPO(driver);
 
         registerPage.clickToMaleRadio();
         registerPage.enterToFirstNameTextBox(firstName);
@@ -94,15 +94,15 @@ public class Level_03_Page_Object_Pattern extends BaseTest {
 
     @Test
     public void User_02_Login() {
-        homePage = new HomePageObject(driver);
+        homePage = new UserHomePO(driver);
         homePage.openHomePage();
 
-        loginPage = new LoginPageObject(driver);
+        loginPage = new UserLoginPO(driver);
         loginPage.enterToEmailTextBox(emailAddress);
         loginPage.enterToPasswordTextBox(password);
         loginPage.openLoginPage();
 
-        homePage = new HomePageObject(driver);
+        homePage = new UserHomePO(driver);
         Assert.assertTrue(homePage.isMyAccountLinkDisplayed());
         homePage.openCustomerInfoPage();
 
@@ -125,7 +125,7 @@ public class Level_03_Page_Object_Pattern extends BaseTest {
 
     @Test
     public void User_03_MyAccount() {
-        customerInfoPage = new CustomerInfoPageObject(driver);
+        customerInfoPage = new UserCustomerInfoPO(driver);
         Assert.assertTrue(customerInfoPage.isGenderMaleRadioButtonSelected());
         Assert.assertEquals(customerInfoPage.getFirstNameTextBoxValue(), firstName);
         Assert.assertEquals(customerInfoPage.getLastNameTextBoxValue(), lastName);

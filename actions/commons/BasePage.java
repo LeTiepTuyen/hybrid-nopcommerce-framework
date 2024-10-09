@@ -8,11 +8,11 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pageObjects.*;
-import pageObjects.sidebar.AddressPageObject;
-import pageObjects.sidebar.CustomerInfoPageObject;
-import pageObjects.sidebar.OrderPageObject;
-import pageObjects.sidebar.RewardPointPageObject;
-import pageUIs.*;
+import pageUIs.users.UserSideBarUI;
+import pageObjects.users.UserAddressPO;
+import pageObjects.users.UserCustomerInfoPO;
+import pageObjects.users.UserOrderPO;
+import pageObjects.users.RewardPointPO;
 
 import java.time.Duration;
 import java.util.List;
@@ -389,29 +389,36 @@ public class BasePage {
     }*/
 
 
-    public AddressPageObject openAddressPage(WebDriver driver) {
-        waitForElementClickable(driver, SideBarUI.ADDRESS_LINK);
-        clickToElement(driver, SideBarUI.ADDRESS_LINK);
-        return PageGeneratorManager.getAddressPage(driver);
+    public UserAddressPO openAddressPage(WebDriver driver) {
+        waitForElementClickable(driver, UserSideBarUI.ADDRESS_LINK);
+        clickToElement(driver, UserSideBarUI.ADDRESS_LINK);
+        return PageGeneratorManager.getUserAddressPage(driver);
     }
 
-    public RewardPointPageObject openRewardPointPage(WebDriver driver) {
-        waitForElementClickable(driver, SideBarUI.REWARD_POINT_LINK);
-        clickToElement(driver, SideBarUI.REWARD_POINT_LINK);
-        return PageGeneratorManager.getRewardPointPage(driver);
+    public RewardPointPO openRewardPointPage(WebDriver driver) {
+        waitForElementClickable(driver, UserSideBarUI.REWARD_POINT_LINK);
+        clickToElement(driver, UserSideBarUI.REWARD_POINT_LINK);
+        return PageGeneratorManager.getUserRewardPointPage(driver);
     }
 
-    public CustomerInfoPageObject openCustomerInfoPage(WebDriver driver) {
-        waitForElementClickable(driver, SideBarUI.CUSTOMER_INFO_LINK);
-        clickToElement(driver, SideBarUI.CUSTOMER_INFO_LINK);
-        return PageGeneratorManager.getCustomerInfoPage(driver);
+    public UserCustomerInfoPO openCustomerInfoPage(WebDriver driver) {
+        waitForElementClickable(driver, UserSideBarUI.CUSTOMER_INFO_LINK);
+        clickToElement(driver, UserSideBarUI.CUSTOMER_INFO_LINK);
+        return PageGeneratorManager.getUserCustomerInfoPage(driver);
     }
 
 
-    public OrderPageObject openOrderPage(WebDriver driver) {
-        waitForElementClickable(driver, SideBarUI.ORDER_LINK);
-        clickToElement(driver, SideBarUI.ORDER_LINK);
-        return PageGeneratorManager.getOrderPage(driver);
+    public UserOrderPO openOrderPage(WebDriver driver) {
+        waitForElementClickable(driver, UserSideBarUI.ORDER_LINK);
+        clickToElement(driver, UserSideBarUI.ORDER_LINK);
+        return PageGeneratorManager.getUserOrderPage(driver);
     }
 
+    public void openAdminSite(WebDriver driver, String adminUrl) {
+        openPageUrl(driver, adminUrl);
+    }
+
+    public void openUserSite(WebDriver driver, String userUrl) {
+        openPageUrl(driver, userUrl);
+    }
 }

@@ -8,22 +8,25 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import pageObjects.*;
-import pageObjects.sidebar.AddressPageObject;
-import pageObjects.sidebar.CustomerInfoPageObject;
-import pageObjects.sidebar.OrderPageObject;
-import pageObjects.sidebar.RewardPointPageObject;
+import pageObjects.users.UserAddressPO;
+import pageObjects.users.UserCustomerInfoPO;
+import pageObjects.users.UserOrderPO;
+import pageObjects.users.RewardPointPO;
+import pageObjects.users.UserHomePO;
+import pageObjects.users.UserLoginPO;
+import pageObjects.users.UserRegisterPO;
 
 public class Level_08_Page_Navigation extends BaseTest {
 
     private WebDriver driver;
 
-    private HomePageObject homePage;
-    private LoginPageObject loginPage;
-    private CustomerInfoPageObject customerInfoPage;
-    private RegisterPageObject registerPage;
-    private AddressPageObject addressPage;
-    private RewardPointPageObject rewardPointPage;
-    private OrderPageObject orderPage;
+    private UserHomePO homePage;
+    private UserLoginPO loginPage;
+    private UserCustomerInfoPO customerInfoPage;
+    private UserRegisterPO registerPage;
+    private UserAddressPO addressPage;
+    private RewardPointPO rewardPointPage;
+    private UserOrderPO orderPage;
     private String firstName, lastName, emailAddress, companyName, password, day, month, year;
 
     @Parameters("browser")
@@ -33,7 +36,7 @@ public class Level_08_Page_Navigation extends BaseTest {
 
         driver = getBrowserDriver(browserName);
 
-        homePage = PageGeneratorManager.getHomePage(driver);
+        homePage = PageGeneratorManager.getUserHomePage(driver);
         firstName = "John";
         lastName = "Wick";
         emailAddress = "johnwick" + generatedRandomNumber() + "@gmail.com";
