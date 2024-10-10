@@ -7,16 +7,10 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-import pageObjects.*;
-import pageObjects.users.UserAddressPO;
-import pageObjects.users.UserCustomerInfoPO;
-import pageObjects.users.UserOrderPO;
-import pageObjects.users.UserRewardPointPO;
-import pageObjects.users.UserHomePO;
-import pageObjects.users.UserLoginPO;
-import pageObjects.users.UserRegisterPO;
+import pageObjects.PageGeneratorManager;
+import pageObjects.users.*;
 
-public class Level_08_Page_Navigation extends BaseTest {
+public class Level_10_Dynamic_Locator extends BaseTest {
 
     private WebDriver driver;
 
@@ -98,17 +92,40 @@ public class Level_08_Page_Navigation extends BaseTest {
     }
 
     @Test
-    public void User_04_Swich_Page() {
+    public void User_04_Swich_Multiple_Pages() {
         // Customer Info -> Address
-        addressPage = customerInfoPage.openAddressPage();
+        customerInfoPage.openSideBarPageByNames("addresses");
+        addressPage = PageGeneratorManager.getUserAddressPage(driver);
+
+
         // Address -> Reward Points
-        rewardPointPage = addressPage.openRewardPointPage();
+        addressPage.openSideBarPageByNames("rewardpoints");
+        rewardPointPage = PageGeneratorManager.getUserRewardPointPage(driver);
         // Reward Points -> Orders
-        orderPage = rewardPointPage.openOrderPage();
+        rewardPointPage.openSideBarPageByNames("order");
+        orderPage = PageGeneratorManager.getUserOrderPage(driver);
         // Orders -> Address
-        addressPage = orderPage.openAddressPage();
+        orderPage.openSideBarPageByNames("addresses");
+        addressPage = PageGeneratorManager.getUserAddressPage(driver);
         // Address -> Customer Info
-        customerInfoPage = addressPage.openCustomerInfoPage();
+        addressPage.openSideBarPageByNames("info");
+        customerInfoPage = PageGeneratorManager.getUserCustomerInfoPage(driver);
+
+
+    }
+
+    @Test
+    public void User_05_Swich_Page_With_Switch_Case() {
+        // Customer Info -> Address
+        addressPage = (UserAddressPO) customerInfoPage.openSideBarPageByName("addresses");
+        // Address -> Reward Points
+        rewardPointPage = (UserRewardPointPO) addressPage.openSideBarPageByName("rewardpoints");
+        // Reward Points -> Orders
+        orderPage = (UserOrderPO) rewardPointPage.openSideBarPageByName("order");
+        // Orders -> Address
+        addressPage = (UserAddressPO) orderPage.openSideBarPageByName("addresses");
+        // Address -> Customer Info
+        customerInfoPage = (UserCustomerInfoPO) addressPage.openSideBarPageByName("info");
 
 
     }

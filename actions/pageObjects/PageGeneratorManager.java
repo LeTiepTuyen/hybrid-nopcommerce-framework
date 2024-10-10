@@ -6,7 +6,7 @@ import pageObjects.admin.AdminLoginPO;
 import pageObjects.users.UserAddressPO;
 import pageObjects.users.UserCustomerInfoPO;
 import pageObjects.users.UserOrderPO;
-import pageObjects.users.RewardPointPO;
+import pageObjects.users.UserRewardPointPO;
 import pageObjects.users.UserHomePO;
 import pageObjects.users.UserLoginPO;
 import pageObjects.users.UserRegisterPO;
@@ -37,8 +37,8 @@ public class PageGeneratorManager {
         return new UserOrderPO(driver);
     }
 
-    public static RewardPointPO getUserRewardPointPage(WebDriver driver) {
-        return new RewardPointPO(driver);
+    public static UserRewardPointPO getUserRewardPointPage(WebDriver driver) {
+        return new UserRewardPointPO(driver);
     }
 
     public static AdminDashboardPO getAdminDashboardPage(WebDriver driver) {

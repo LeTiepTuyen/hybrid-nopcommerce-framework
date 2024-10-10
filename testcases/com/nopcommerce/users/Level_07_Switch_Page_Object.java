@@ -11,7 +11,7 @@ import pageObjects.*;
 import pageObjects.users.UserAddressPO;
 import pageObjects.users.UserCustomerInfoPO;
 import pageObjects.users.UserOrderPO;
-import pageObjects.users.RewardPointPO;
+import pageObjects.users.UserRewardPointPO;
 import pageObjects.users.UserHomePO;
 import pageObjects.users.UserLoginPO;
 import pageObjects.users.UserRegisterPO;
@@ -25,7 +25,7 @@ public class Level_07_Switch_Page_Object extends BaseTest {
     private UserCustomerInfoPO customerInfoPage;
     private UserRegisterPO registerPage;
     private UserAddressPO addressPage;
-    private RewardPointPO rewardPointPage;
+    private UserRewardPointPO rewardPointPage;
     private UserOrderPO orderPage;
     private String firstName, lastName, emailAddress, companyName, password, day, month, year;
 

@@ -16,7 +16,7 @@ import pageObjects.users.UserRegisterPO;
 import pageObjects.users.UserAddressPO;
 import pageObjects.users.UserCustomerInfoPO;
 import pageObjects.users.UserOrderPO;
-import pageObjects.users.RewardPointPO;
+import pageObjects.users.UserRewardPointPO;
 
 public class Level_09_Switch_Site_Url extends BaseTest {
 
@@ -27,7 +27,7 @@ public class Level_09_Switch_Site_Url extends BaseTest {
     private UserCustomerInfoPO userCustomerInfoPage;
     private UserRegisterPO userRegisterPage;
     private UserAddressPO userAddressPage;
-    private RewardPointPO userRewardPointPage;
+    private UserRewardPointPO userRewardPointPage;
     private UserOrderPO userOrderPage;
     private String firstName, lastName, emailAddress, companyName, password, day, month, year;
     private String adminUrl;
@@ -96,7 +96,7 @@ public class Level_09_Switch_Site_Url extends BaseTest {
 
         userHomePage = PageGeneratorManager.getUserHomePage(driver);
         userCustomerInfoPage = userHomePage.openCustomerInfoPage();
-        
+
     }
 
 
