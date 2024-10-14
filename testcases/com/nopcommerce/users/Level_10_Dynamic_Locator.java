@@ -7,8 +7,8 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-import pageObjects.PageGeneratorManager;
-import pageObjects.users.*;
+import pageObjects.nopCommerce.PageGeneratorManager;
+import pageObjects.nopCommerce.users.*;
 
 public class Level_10_Dynamic_Locator extends BaseTest {
 

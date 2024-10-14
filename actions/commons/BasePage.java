@@ -7,12 +7,13 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import pageObjects.*;
-import pageUIs.users.UserSideBarUI;
-import pageObjects.users.UserAddressPO;
-import pageObjects.users.UserCustomerInfoPO;
-import pageObjects.users.UserOrderPO;
-import pageObjects.users.UserRewardPointPO;
+import pageObjects.nopCommerce.PageGeneratorManager;
+import pageUIs.nopCommerce.BasePageUI;
+import pageUIs.nopCommerce.users.UserSideBarUI;
+import pageObjects.nopCommerce.users.UserAddressPO;
+import pageObjects.nopCommerce.users.UserCustomerInfoPO;
+import pageObjects.nopCommerce.users.UserOrderPO;
+import pageObjects.nopCommerce.users.UserRewardPointPO;
 
 import java.time.Duration;
 import java.util.List;
@@ -119,6 +120,10 @@ public class BasePage {
         return driver.findElements(getByLocator(locator));
     }
 
+    protected List<WebElement> getListElements(WebDriver driver, String locator, String... dynamicValues) {
+        return driver.findElements(getByLocator(formatLocator(locator, dynamicValues)));
+    }
+
 
     private By getByLocator(String prefixLocator) {
         if (prefixLocator == null || prefixLocator.isEmpty()) {
@@ -163,13 +168,15 @@ public class BasePage {
     }
 
     public void sendKeyToElement(WebDriver driver, String locator, String keysToSend) {
+
+        // hàm getElement(driver, locator).clear(); khi gặp một the input bị ẩn thì sẽ gây ra lỗi
         getElement(driver, locator).clear();
         getElement(driver, locator).sendKeys(keysToSend);
     }
 
-    public void sendKeyToElement(WebDriver driver, String locator, String keysToSend, String... dynamicValues) {
+    public void sendKeyToElement(WebDriver driver, String locator, String valueToSendkey, String... dynamicValues) {
         getElement(driver, formatLocator(locator, dynamicValues)).clear();
-        getElement(driver, formatLocator(locator, dynamicValues)).sendKeys(keysToSend);
+        getElement(driver, formatLocator(locator, dynamicValues)).sendKeys(valueToSendkey);
     }
 
     public void selectItemInDropDown(WebDriver driver, String locator, String textItem) {
@@ -246,9 +253,21 @@ public class BasePage {
         }
     }
 
+    public void checkToTheCheckBoxOrRadio(WebDriver driver, String locator, String... dynamicValues) {
+        if (!getElement(driver, formatLocator(locator, dynamicValues)).isSelected()) {
+            getElement(driver, formatLocator(locator, dynamicValues)).click();
+        }
+    }
+
     public void uncheckToTheCheckBoxOrRadio(WebDriver driver, String locator) {
         if (getElement(driver, locator).isSelected()) {
             getElement(driver, locator).click();
+        }
+    }
+
+    public void uncheckToTheCheckBoxOrRadio(WebDriver driver, String locator, String... dynamicValues) {
+        if (getElement(driver, formatLocator(locator, dynamicValues)).isSelected()) {
+            getElement(driver, formatLocator(locator, dynamicValues)).click();
         }
     }
 
@@ -308,6 +327,10 @@ public class BasePage {
 
     public void pressKeyToElement(WebDriver driver, String locator, Keys key) {
         new Actions(driver).sendKeys(getElement(driver, locator), key).perform();
+    }
+
+    public void pressKeyToElement(WebDriver driver, String locator, Keys key, String... dynamicValues) {
+        new Actions(driver).sendKeys(getElement(driver, formatLocator(locator, dynamicValues)), key).perform();
     }
 
     public void scrollToElement(WebDriver driver, String locator) {
@@ -383,6 +406,18 @@ public class BasePage {
                 "return arguments[0].complete && typeof arguments[0].naturalWidth != 'undefined' && arguments[0].naturalWidth > 0", getElement(driver, locator));
     }
 
+    public void uploadMultipleFiles(WebDriver driver, String... fileNames) {
+        String filePath = GlobalConstants.UPLOAD_PATH;
+        StringBuilder fullFileName = new StringBuilder();
+        for (String file : fileNames) {
+            fullFileName.append(filePath).append(file).append("\n");
+        }
+
+        // Không nên dùng hàm sendKeyToElement() viêt sa
+        getElement(driver, BasePageUI.UPLOAD_FILE_TYPE).sendKeys(fullFileName.toString().trim());
+
+    }
+
     /*public void removeAttributeInDOM(WebDriver driver, String locator, String attributeRemove, String... restParams) {
         ((JavascriptExecutor) driver).executeScript("arguments[0].removeAttribute('" + attributeRemove + "');", getElement(driver, getDynamicLocator(locator, restParams)));
     }*/
@@ -392,8 +427,16 @@ public class BasePage {
         new WebDriverWait(driver, Duration.ofSeconds(GlobalConstants.LONG_TIMEOUT)).until(ExpectedConditions.visibilityOfElementLocated(getByLocator(locator)));
     }
 
+    public void waitForElementVisible(WebDriver driver, WebElement element) {
+        new WebDriverWait(driver, Duration.ofSeconds(GlobalConstants.LONG_TIMEOUT)).until(ExpectedConditions.visibilityOf(element));
+    }
+
     public void waitForElementVisible(WebDriver driver, String locator, String... dynamicValues) {
         new WebDriverWait(driver, Duration.ofSeconds(GlobalConstants.LONG_TIMEOUT)).until(ExpectedConditions.visibilityOfElementLocated(getByLocator(formatLocator(locator, dynamicValues))));
+    }
+
+    public void waitForAllElementVisible(WebDriver driver, String locator, String... dynamicValues) {
+        new WebDriverWait(driver, Duration.ofSeconds(GlobalConstants.LONG_TIMEOUT)).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(getByLocator(formatLocator(locator, dynamicValues))));
     }
 
     public void waitForElementInvisible(WebDriver driver, String locator) {
