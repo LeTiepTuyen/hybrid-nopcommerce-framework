@@ -80,4 +80,9 @@ public class UserRegisterPO extends BasePage {
         waitForElementVisible(driver, UserRegisterPageUI.REGISTER_SUCCESS_MESSAGE);
         return getTextElement(driver, UserRegisterPageUI.REGISTER_SUCCESS_MESSAGE);
     }
+
+    public String getRegisterPageTitle() {
+        waitForElementVisible(driver, UserRegisterPageUI.REGISTER_PAGE_TITLE);
+        return getTextElement(driver, UserRegisterPageUI.REGISTER_PAGE_TITLE);
+    }
 }

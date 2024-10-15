@@ -15,4 +15,5 @@ public class UserRegisterPageUI {
     public static final String REGISTER_BUTTON = "xpath=//button[@id='register-button']";
     public static final String REGISTER_SUCCESS_MESSAGE = "xpath=//div[@class='result']";
     public static final String LOGOUT_LINK = "css=a[class='ico-logout']";
+    public static final String REGISTER_PAGE_TITLE = "css=div.page-title>h1";
 }
