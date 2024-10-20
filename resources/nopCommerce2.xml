@@ -5,7 +5,7 @@
         <listener class-name="commons.MethodListener"/> <!-- show all failed number/error m -->
         <!--        <listener class-name="org.uncommons.reportng.HTMLReporter"/>-->
         <!--        <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>-->
-        <listener class-name="reportConfigs.ExtentListener"/>
+        <listener class-name="reportConfigs.ExtentTestListener"/>
     </listeners>
     <parameter name="userUrl" value="http://demo.nopcommerce/"/>
     <!--    <parameter name="adminUrl" value="http://demo.nopcommerce/admin"/>-->
@@ -13,7 +13,7 @@
           name="Run on firefox driver">
         <parameter name="browser" value="firefox"/>
         <classes>
-            <class name="com.nopcommerce.users.Level_14_Log4J"/>
+            <class name="com.nopcommerce.users.Level_15_ExtentReport2"/>
         </classes>
     </test>
 
