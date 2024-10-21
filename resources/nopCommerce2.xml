@@ -2,28 +2,30 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All Test Suite">
     <listeners>
-        <listener class-name="commons.MethodListener"/> <!-- show all failed number/error m -->
         <!--        <listener class-name="org.uncommons.reportng.HTMLReporter"/>-->
         <!--        <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>-->
-        <listener class-name="reportConfigs.ExtentTestListener"/>
+        <listener class-name="commons.MethodListener"/> <!-- show all failed number/error m -->
+        <listener class-name="reportConfigs.ExtentListener"/>
     </listeners>
     <parameter name="userUrl" value="http://demo.nopcommerce/"/>
-    <!--    <parameter name="adminUrl" value="http://demo.nopcommerce/admin"/>-->
+
     <test verbose="1" preserve-order="true"
           name="Run on firefox driver">
         <parameter name="browser" value="firefox"/>
         <classes>
-            <class name="com.nopcommerce.users.Level_15_ExtentReport2"/>
+            <class name="com.nopcommerce.users.Level_15_ExtentReport_Version5"/>
         </classes>
     </test>
 
-    <!--    <test verbose="1" preserve-order="true"-->
-    <!--          name="Run on chrome driver">-->
-    <!--        <parameter name="browser" value="chrome"/>-->
-    <!--        <classes>-->
-    <!--            <class name="com.nopcommerce.users.Level_14_Log4J"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+
+    <!--    <parameter name="adminUrl" value="http://demo.nopcommerce/admin"/>-->
+    <test verbose="1" preserve-order="true"
+          name="Run on chrome driver">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="com.nopcommerce.users.Level_15_ExtentReport_Version5"/>
+        </classes>
+    </test>
 
     <!--    <test verbose="0" preserve-order="true"-->
     <!--          name="Run on edge driver">-->
